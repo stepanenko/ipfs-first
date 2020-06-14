@@ -1,4 +1,6 @@
 
+/// Currying - transforming a func with multiple params into func with a single param
+
 function greet(msg) {
   return function(name) {
     console.log(`${msg}, ${name}!`);
@@ -13,3 +15,5 @@ names.map(greet('Good morning'));
 // Higher-order functions: greet, map
 
 // Closures: msg
+
+// Curried function: greet
