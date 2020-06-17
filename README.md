@@ -4,7 +4,7 @@ Author: **James Moore**
 
 Duration: **05:39:54**
 
-Progress: **18/58**
+Progress: **18/58** 
 
 ### Pure Functions:
 - Have input params
