@@ -1,25 +1,26 @@
 
-let count = 0;
+let initModel = 0;
 
 const app = document.getElementById('app');
 
-function createCountEl(title, count) {
+function view(model) {
   const div = document.createElement('div');
-  const label = document.createElement('span');
-  const p = document.createElement('p');
-  label.innerText = title;
-  p.id = 'count';
-  p.innerText = count;
-  p.style.display = 'inline-block';
-  p.style.paddingLeft = '7px';
-  div.append(label, p);
+  const div2 = document.createElement('div2');
+  div2.id = 'count';
+  div2.innerText = `Count: ${model}`;
+  div2.classList = 'mv2';
+  div.appendChild(div2);
+  div.append(
+    createButton('pv1 ph2 mr2', '+', () => update('plus')),
+    createButton('pv1 ph2', '-', () => update('minus'))
+  );
   return div;
 }
 
-function createButton(name, action) {
+function createButton(classes, name, action) {
   const btn = document.createElement('button');
-  const p = document.getElementById('count');
   btn.innerText = name;
+  btn.classList = classes;
   btn.style.cssText = `
     margin: 5px;
     color: white;
@@ -28,16 +29,15 @@ function createButton(name, action) {
     border: none;
     cursor: pointer;
   `;
-  btn.addEventListener('click', () => {
-    action();
-    p.innerText = count;
-  });
+  btn.addEventListener('click', () => action());
   return btn;
 }
 
+function update(msg) {
+  const div2 = document.getElementById('count');
+  div2.innerText = msg === 'plus'
+    ? `Count: ${initModel = initModel + 1}`
+    : `Count: ${initModel = initModel - 1}`;
+}
 
-app.appendChild(createCountEl('Count:', count));
-app.append(
-  createButton('Plus', () => count++),
-  createButton('Minus', () => count--)
-);
+app.appendChild(view(initModel));
