@@ -1,18 +1,15 @@
 
-let initModel = 0;
+const initModel = 0;
 
-const app = document.getElementById('app');
-
-function view(model) {
+function view(dispatch, model) {
   const div = document.createElement('div');
   const div2 = document.createElement('div2');
-  div2.id = 'count';
   div2.innerText = `Count: ${model}`;
   div2.classList = 'mv2';
   div.appendChild(div2);
   div.append(
-    createButton('pv1 ph2 mr2', '+', () => update('plus')),
-    createButton('pv1 ph2', '-', () => update('minus'))
+    createButton('pv1 ph2 mr2', '+', () => dispatch('plus')),
+    createButton('pv1 ph2', '-', () => dispatch('minus'))
   );
   return div;
 }
@@ -33,11 +30,23 @@ function createButton(classes, name, action) {
   return btn;
 }
 
-function update(msg) {
-  const div2 = document.getElementById('count');
-  div2.innerText = msg === 'plus'
-    ? `Count: ${initModel = initModel + 1}`
-    : `Count: ${initModel = initModel - 1}`;
+function update(msg, model) {
+  return msg === 'plus' ? model + 1 : model - 1;
 }
 
-app.appendChild(view(initModel));
+// impure code below:
+function app(initModel, update, view, node) {
+  let model = initModel;
+  let currentView = view(dispatch, model);
+  node.appendChild(currentView);
+  function dispatch(msg) {
+    model = update(msg, model);
+    const updatedView = view(dispatch, model);
+    node.replaceChild(updatedView, currentView);
+    currentView = updatedView;
+  }
+}
+
+const rootNode = document.getElementById('app');
+
+app(initModel, update, view, rootNode);
