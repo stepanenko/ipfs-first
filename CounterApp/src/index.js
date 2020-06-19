@@ -1,5 +1,9 @@
 
 const initModel = 0;
+const MSGS = {
+  ADD: 'ADD',
+  SUBTRACT: 'SUBTRACT'
+}
 
 function view(dispatch, model) {
   const div = document.createElement('div');
@@ -8,8 +12,8 @@ function view(dispatch, model) {
   div2.classList = 'mv2';
   div.appendChild(div2);
   div.append(
-    createButton('pv1 ph2 mr2', '+', () => dispatch('plus')),
-    createButton('pv1 ph2', '-', () => dispatch('minus'))
+    createButton('pv1 ph2 mr2', '+', () => dispatch(MSGS.ADD)),
+    createButton('pv1 ph2', '-', () => dispatch(MSGS.SUBTRACT))
   );
   return div;
 }
@@ -31,7 +35,11 @@ function createButton(classes, name, action) {
 }
 
 function update(msg, model) {
-  return msg === 'plus' ? model + 1 : model - 1;
+  switch(msg) {
+    case MSGS.ADD: return model + 1;
+    case MSGS.SUBTRACT: return model - 1;
+    default: return model;
+  }
 }
 
 // impure code below:
