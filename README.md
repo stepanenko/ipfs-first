@@ -5,7 +5,7 @@ Author: **James Moore**
 
 Duration: **05:39:54**
 
-Progress: **33/58** 
+Progress: **34/58** 
 
 ### Fundamental building blocks of FP are:
 
