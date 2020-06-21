@@ -13,6 +13,7 @@ Progress: **34/58**
 - Pure Functions
 
 ### Pure Functions:
+
 - Have input params
 - No stateful values (not depend on variables outside)
 - Return based on input
