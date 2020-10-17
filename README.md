@@ -1,11 +1,13 @@
 
 ## [Functional Programming For Beginners With JavaScript](https://coursehunter.net/course/javascript-funkcionalnoe-programmirovanie-dlya-nachinayushchih)
 
-Author: **James Moore**
+Course teacher: **James Moore**
 
 Duration: **05:39:54**
 
-Progress: **34/58** 
+Progress: **34/58**
+
+Updated all on 17.10.2020
 
 ### Fundamental building blocks of FP are:
 
